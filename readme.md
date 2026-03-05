@@ -21,5 +21,8 @@ kubectl edit secret argocd-secret -n argocd
 #   webhook.github.secret: bXlXZWJob29rU2VjcmV0MTIz
 #   webhook.gitlab.secret: bXlXZWJob29rU2VjcmV0MTIz
 
+# after add the secret please restart the argocd server
+kubectl rollout restart deployment argocd-server -n argocd
 
+# then go to test by change your code and push to git repo
 ```
