@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myplant-dpl
+spec:
+  selector:
+    matchLabels:
+      app: myplant
+  template:
+    metadata:
+      labels:
+        app: myplant
+    spec:
+      containers:
+      - name: myplant
+        image: 69966/earthdx:78
+        ports:
+        - containerPort: 80
