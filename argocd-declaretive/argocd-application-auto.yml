@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-app-auto
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/chengdevith/argocd.git
+    targetRevision: HEAD
+    path: argocd-helm/reactjs-chart
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Validate=false
