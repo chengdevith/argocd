@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-file-upload
+spec:
+  selector:
+    matchLabels:
+      app: spring-file-upload
+  template:
+    metadata:
+      labels:
+        app: spring-file-upload
+    spec:
+      containers:
+      - name: spring-file-upload
+        # imagePullPolicy: IfNotPresent
+        image: 69966/springgradleimg:1.1.1
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - name: images-storage
+            mountPath: app/src/main/resources/images
+      volumes:
+        - name: images-storage
+          persistentVolumeClaim:
+            claimName: longhorn-pvc
