@@ -8,7 +8,7 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - file-upload.devith.it.com
+      - file-upload.devith.it.com
       secretName: spring-tls
   rules:
   - host: file-upload.devith.it.com
